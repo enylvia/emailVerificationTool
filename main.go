@@ -14,7 +14,9 @@ func main() {
 	fmt.Sprintf("domain, hasMX, hasSPF,sprRecord,hasDMARC,dmarcRecord \n")
 
 	for scanner.Scan(){
-		checkDomain(scanner.Text())
+		var email = scanner.Text()
+		var domain = strings.Split(email, "@")[1]
+		checkDomain(domain)
 	}
 
 	if err := scanner.Err(); err != nil {
